@@ -80,7 +80,9 @@ int main() {
                 printf("%d khong phai so chinh phuong!\n", x);
         }
 
+
     } while (choice != 0);
+    //bai 4 xay dung menu
 
     printf("Chuong trinh ket thuc.\n");
     return 0;
