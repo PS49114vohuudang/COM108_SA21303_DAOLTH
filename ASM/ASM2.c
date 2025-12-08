@@ -6,7 +6,9 @@ void chucNang1() {
     int x;
     printf("Nhap so nguyen x: ");
     scanf("%d", &x);
+
     printf("So %d la so nguyen.\n", x);
+
     int isPrime = 1;
     if (x < 2) isPrime = 0;
     else {
@@ -17,9 +19,10 @@ void chucNang1() {
             }
         }
     }
-    printf("So %d %s la so nguyen to.\n", x, isPrime ? " " : "khong");
+    printf("So %d %s la so nguyen to.\n", x, isPrime ? "" : "khong");
+
     int k = sqrt(x);
-    printf("So %d %s la so chinh phuong.\n", x, (k * k ==x) ? " " : "khong");
+    printf("So %d %s la so chinh phuong.\n", x, (k * k == x) ? "" : "khong");
 }
 
 int UCLN(int a, int b) {
@@ -30,11 +33,41 @@ int UCLN(int a, int b) {
     }
     return a;
 }
+
 int BCNN(int a, int b) {
     return (a * b) / UCLN(a, b);
 }
 
+void chucNang2() {
+    int a, b;
+    printf("Nhap 2 so a va b: ");
+    scanf("%d %d", &a, &b);
+
+    printf("UCLN cua %d va %d la: %d\n", a, b, UCLN(a, b));
+    printf("BCNN cua %d va %d la: %d\n", a, b, BCNN(a, b));
+}
+
+
+// ================= MENU =================
 int main() {
-    chucNang1();
+    int choice;
+
+    do {
+        printf("\n===== MENU =====\n");
+        printf("1. Kiem tra so nguyen – so nguyen to – so chinh phuong\n");
+        printf("2. Tim UCLN & BCNN\n");
+        printf("0. Thoat\n");
+        printf("Nhap lua chon: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1: chucNang1(); break;
+            case 2: chucNang2(); break;
+            case 0: printf("Thoat chuong trinh.\n"); break;
+            default: printf("Lua chon khong hop le!\n");
+        }
+
+    } while(choice != 0);
+
     return 0;
 }
