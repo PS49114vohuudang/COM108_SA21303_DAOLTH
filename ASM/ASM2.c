@@ -118,30 +118,55 @@ void chucNang6() {
 
     printf("Nhap so tien gui (VND): ");
     scanf("%lf", &soTienGui);
+
     printf("Nhap lai suat nam (%%): ");
     scanf("%lf", &laiSuat);
+
     printf("Nhap so thang gui: ");
     scanf("%d", &thang);
 
-    double laiSuatThang = laiSuat / 12 / 100;
-    double tienLai = soTienGui * laiSuatThang * thang;
+    double laiThang = laiSuat / 12 / 100;
+    double tienLai = soTienGui * laiThang * thang;
     double tongTien = soTienGui + tienLai;
 
     printf("Tien lai: %.0lf VND\n", tienLai);
     printf("Tong tien nhan duoc: %.0lf VND\n", tongTien);
 }
 
-// ================= MENU =================
+void chucNang7() {
+    int phanTramVay;
+    printf("Nhap phan tram vay (VD: 80): ");
+    scanf("%d", &phanTramVay);
+
+    double giaXe = 500000000;  // 500 trieu
+    double soTienVay = giaXe * phanTramVay / 100;
+    double tienTraTruoc = giaXe - soTienVay;
+
+    int thoiHanNam = 24;
+    int soThang = thoiHanNam * 12;
+    double laiSuatNam = 7.2;
+    double laiSuatThang = laiSuatNam / 12 / 100;
+
+    double gocHangThang = soTienVay / soThang;
+    double laiThangDau = soTienVay * laiSuatThang;
+    double tongThangDau = gocHangThang + laiThangDau;
+
+    printf("Tien tra truoc: %.0lf VND\n", tienTraTruoc);
+    printf("So tien vay: %.0lf VND\n", soTienVay);
+    printf("Tien tra thang dau: %.0lf VND\n", tongThangDau);
+}
+
 int main() {
     int choice;
     do {
         printf("\n===== MENU =====\n");
-        printf("1. Kiem tra so\n");
+        printf("1. Kiem tra so nguyen x\n");
         printf("2. UCLN & BCNN\n");
         printf("3. Tinh tien karaoke\n");
         printf("4. Tinh tien dien\n");
         printf("5. Doi tien\n");
         printf("6. Tinh lai tiet kiem\n");
+        printf("7. Vay tien mua xe\n");
         printf("0. Thoat\n");
 
         printf("Nhap lua chon: ");
@@ -154,10 +179,10 @@ int main() {
             case 4: chucNang4(); break;
             case 5: chucNang5(); break;
             case 6: chucNang6(); break;
+            case 7: chucNang7(); break;
             case 0: printf("Thoat chuong trinh.\n"); break;
             default: printf("Lua chon khong hop le!\n");
         }
-
     } while (choice != 0);
 
     return 0;
