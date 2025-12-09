@@ -19,10 +19,10 @@ void chucNang1() {
             }
         }
     }
-    printf("So %d %s la so nguyen to.\n", x, isPrime ? " " : "khong");
+    printf("So %d %s la so nguyen to.\n", x, isPrime ? "" : "khong");
 
     int k = sqrt(x);
-    printf("So %d %s la so chinh phuong.\n", x, (k * k ==x) ? " " : "khong");
+    printf("So %d %s la so chinh phuong.\n", x, (k * k == x) ? "" : "khong");
 }
 
 int UCLN(int a, int b) {
@@ -70,15 +70,60 @@ void chucNang3() {
 
     printf("Tien karaoke phai tra: %.0f VND\n", tien);
 }
+
+void chucNang4() {
+    int kwh;
+    printf("Nhap so kWh su dung: ");
+    scanf("%d", &kwh);
+
+    long tien = 0;
+
+    if (kwh <= 50)
+        tien = kwh * 1678;
+    else if (kwh <= 100)
+        tien = 50 * 1678 + (kwh - 50) * 1734;
+    else if (kwh <= 200)
+        tien = 50 * 1678 + 50 * 1734 + (kwh - 100) * 2014;
+    else if (kwh <= 300)
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kwh - 200) * 2536;
+    else if (kwh <= 400)
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kwh - 300) * 2834;
+    else
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kwh - 400) * 2927;
+
+    printf("Tien dien phai tra la: %ld VND\n", tien);
+}
+
+void chucNang5() {
+    int tien;
+    printf("Nhap so tien can doi: ");
+    scanf("%d", &tien);
+
+    int menhGia[] = {500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int n = 9;
+
+    printf("Ket qua doi tien:\n");
+    for (int i = 0; i < n; i++) {
+        int soTo = tien / menhGia[i];
+        if (soTo > 0) {
+            printf("%d to %d\n", soTo, menhGia[i]);
+        }
+        tien %= menhGia[i];
+    }
+}
+
 int main() {
     int choice;
 
     do {
         printf("\n===== MENU =====\n");
-        printf("1. Kiem tra so nguyen / so nguyen to / so chinh phuong\n");
-        printf("2. Tim UCLN & BCNN\n");
+        printf("1. Kiem tra so\n");
+        printf("2. UCLN & BCNN\n");
         printf("3. Tinh tien karaoke\n");
+        printf("4. Tinh tien dien\n");
+        printf("5. Doi tien\n");
         printf("0. Thoat\n");
+
         printf("Nhap lua chon: ");
         scanf("%d", &choice);
 
@@ -86,6 +131,8 @@ int main() {
             case 1: chucNang1(); break;
             case 2: chucNang2(); break;
             case 3: chucNang3(); break;
+            case 4: chucNang4(); break;
+            case 5: chucNang5(); break;
             case 0: printf("Thoat chuong trinh.\n"); break;
             default: printf("Lua chon khong hop le!\n");
         }
