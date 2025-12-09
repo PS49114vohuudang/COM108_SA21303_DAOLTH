@@ -112,9 +112,28 @@ void chucNang5() {
     }
 }
 
+void chucNang6() {
+    double soTienGui, laiSuat;
+    int thang;
+
+    printf("Nhap so tien gui (VND): ");
+    scanf("%lf", &soTienGui);
+    printf("Nhap lai suat nam (%%): ");
+    scanf("%lf", &laiSuat);
+    printf("Nhap so thang gui: ");
+    scanf("%d", &thang);
+
+    double laiSuatThang = laiSuat / 12 / 100;
+    double tienLai = soTienGui * laiSuatThang * thang;
+    double tongTien = soTienGui + tienLai;
+
+    printf("Tien lai: %.0lf VND\n", tienLai);
+    printf("Tong tien nhan duoc: %.0lf VND\n", tongTien);
+}
+
+// ================= MENU =================
 int main() {
     int choice;
-
     do {
         printf("\n===== MENU =====\n");
         printf("1. Kiem tra so\n");
@@ -122,6 +141,7 @@ int main() {
         printf("3. Tinh tien karaoke\n");
         printf("4. Tinh tien dien\n");
         printf("5. Doi tien\n");
+        printf("6. Tinh lai tiet kiem\n");
         printf("0. Thoat\n");
 
         printf("Nhap lua chon: ");
@@ -133,6 +153,7 @@ int main() {
             case 3: chucNang3(); break;
             case 4: chucNang4(); break;
             case 5: chucNang5(); break;
+            case 6: chucNang6(); break;
             case 0: printf("Thoat chuong trinh.\n"); break;
             default: printf("Lua chon khong hop le!\n");
         }
