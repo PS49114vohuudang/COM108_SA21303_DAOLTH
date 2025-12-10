@@ -4,8 +4,7 @@
 #include <time.h>
 #include <string.h>
 
-// ================= CHUC NANG 1 =================
-void chucNang1() { /* GIU NGUYEN */
+void chucNang1() { 
     int x;
     printf("Nhap so nguyen x: ");
     scanf("%d", &x);
@@ -27,7 +26,6 @@ void chucNang1() { /* GIU NGUYEN */
     printf("So %d %s la so chinh phuong.\n", x, (k * k == x) ? "" : "khong");
 }
 
-// ================= CHUC NANG 2 =================
 int UCLN(int a, int b) {
     while (b != 0) {
         int tmp = a % b;
@@ -50,8 +48,7 @@ void chucNang2() {
     printf("BCNN cua %d va %d la: %d\n", a, b, BCNN(a, b));
 }
 
-// ================= CHUC NANG 3 =================
-void chucNang3() { /* GIU NGUYEN */
+void chucNang3() {
     int start, end;
     printf("Nhap gio bat dau: ");
     scanf("%d", &start);
@@ -73,8 +70,7 @@ void chucNang3() { /* GIU NGUYEN */
     printf("Tien karaoke: %.0f VND\n", tien);
 }
 
-// ================= CHUC NANG 4 =================
-void chucNang4() { /* GIU NGUYEN */
+void chucNang4() { 
     int kwh;
     printf("Nhap so kWh: ");
     scanf("%d", &kwh);
@@ -90,8 +86,8 @@ void chucNang4() { /* GIU NGUYEN */
     printf("Tien dien: %ld VND\n", tien);
 }
 
-// ================= CHUC NANG 5 =================
-void chucNang5() { /* GIU NGUYEN */
+
+void chucNang5() { 
     int tien;
     printf("Nhap so tien: ");
     scanf("%d", &tien);
@@ -104,8 +100,7 @@ void chucNang5() { /* GIU NGUYEN */
     }
 }
 
-// ================= CHUC NANG 6 =================
-void chucNang6() { /* GIU NGUYEN */
+void chucNang6() { 
     double tien, ls;
     int thang;
     printf("Nhap so tien gui: ");
@@ -120,8 +115,8 @@ void chucNang6() { /* GIU NGUYEN */
     printf("Tong tien: %.0lf\n", tien+lai);
 }
 
-// ================= CHUC NANG 7 =================
-void chucNang7() { /* GIU NGUYEN */
+
+void chucNang7() {
     int pt;
     printf("Nhap %% vay: ");
     scanf("%d",&pt);
@@ -140,7 +135,6 @@ void chucNang7() { /* GIU NGUYEN */
     printf("Tra thang dau: %.0lf\n", thangDau);
 }
 
-// ================= CHUC NANG 8 (MOI) =================
 typedef struct {
     char ten[50];
     float diem;
@@ -175,7 +169,6 @@ void chucNang8() {
         xepHocLuc(&sv[i]);
     }
 
-    // Sap xep giam dan theo diem
     for(int i=0;i<n-1;i++){
         for(int j=i+1;j<n;j++){
             if(sv[i].diem < sv[j].diem){
@@ -192,7 +185,6 @@ void chucNang8() {
     }
 }
 
-// ================= MENU =================
 int main() {
     int choice;
     do {
@@ -226,3 +218,4 @@ int main() {
 
     return 0;
 }
+ 
