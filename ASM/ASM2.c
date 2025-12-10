@@ -2,13 +2,12 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 
-void chucNang1() { 
+void chucNang1() {
     int x;
     printf("Nhap so nguyen x: ");
     scanf("%d", &x);
-    printf("So %d la so nguyen.\n", x);
+    printf("So %d la so nguyen x.\n", x);
 
     int isPrime = 1;
     if (x < 2) isPrime = 0;
@@ -56,7 +55,7 @@ void chucNang3() {
     scanf("%d", &end);
 
     if (start < 12 || end > 23 || start >= end) {
-        printf("Gio khong hop le!\n");
+        printf("Gio khong hop le! (Quan hoat dong tu 12h - 23h)\n");
         return;
     }
 
@@ -65,157 +64,101 @@ void chucNang3() {
     int gioSau = (gio > 3) ? (gio - 3) : 0;
 
     double tien = gioDau * 150000 + gioSau * 150000 * 0.7;
-    if (start >= 14 && start <= 17) tien *= 0.9;
 
-    printf("Tien karaoke: %.0f VND\n", tien);
+    if (start >= 14 && start <= 17)
+        tien *= 0.9;
+
+    printf("Tien karaoke phai tra: %.0f VND\n", tien);
 }
 
-void chucNang4() { 
+void chucNang4() {
     int kwh;
-    printf("Nhap so kWh: ");
+    printf("Nhap so kWh su dung: ");
     scanf("%d", &kwh);
 
     long tien = 0;
-    if (kwh <= 50) tien = kwh * 1678;
-    else if (kwh <= 100) tien = 50 * 1678 + (kwh - 50) * 1734;
-    else if (kwh <= 200) tien = 50 * 1678 + 50 * 1734 + (kwh - 100) * 2014;
-    else if (kwh <= 300) tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kwh - 200) * 2536;
-    else if (kwh <= 400) tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kwh - 300) * 2834;
-    else tien = 50*1678 + 50*1734 + 100*2014 + 100*2536 + 100*2834 + (kwh-400)*2927;
 
-    printf("Tien dien: %ld VND\n", tien);
+    if (kwh <= 50)
+        tien = kwh * 1678;
+    else if (kwh <= 100)
+        tien = 50 * 1678 + (kwh - 50) * 1734;
+    else if (kwh <= 200)
+        tien = 50 * 1678 + 50 * 1734 + (kwh - 100) * 2014;
+    else if (kwh <= 300)
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kwh - 200) * 2536;
+    else if (kwh <= 400)
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kwh - 300) * 2834;
+    else
+        tien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kwh - 400) * 2927;
+
+    printf("Tien dien phai tra la: %ld VND\n", tien);
 }
 
-
-void chucNang5() { 
+void chucNang5() {
     int tien;
-    printf("Nhap so tien: ");
+    printf("Nhap so tien can doi: ");
     scanf("%d", &tien);
 
-    int mg[] = {500,200,100,50,20,10,5,2,1};
-    for(int i=0;i<9;i++){
-        int soTo=tien/mg[i];
-        if(soTo>0) printf("%d to %d\n", soTo, mg[i]);
-        tien%=mg[i];
-    }
-}
+    int menhGia[] = {500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int n = 9;
 
-void chucNang6() { 
-    double tien, ls;
-    int thang;
-    printf("Nhap so tien gui: ");
-    scanf("%lf",&tien);
-    printf("Nhap lai suat nam: ");
-    scanf("%lf",&ls);
-    printf("Nhap so thang: ");
-    scanf("%d",&thang);
-
-    double lai = tien * (ls/12/100) * thang;
-    printf("Tien lai: %.0lf\n",lai);
-    printf("Tong tien: %.0lf\n", tien+lai);
-}
-
-
-void chucNang7() {
-    int pt;
-    printf("Nhap %% vay: ");
-    scanf("%d",&pt);
-
-    double giaXe=500000000;
-    double vay=giaXe*pt/100;
-    double traTruoc=giaXe-vay;
-    double ls=7.2/12/100;
-    int thang=24*12;
-
-    double goc=vay/thang;
-    double thangDau=goc+vay*ls;
-
-    printf("Tra truoc: %.0lf\n", traTruoc);
-    printf("Tien vay: %.0lf\n", vay);
-    printf("Tra thang dau: %.0lf\n", thangDau);
-}
-
-typedef struct {
-    char ten[50];
-    float diem;
-    char hocLuc[20];
-} SinhVien;
-
-void xepHocLuc(SinhVien *sv) {
-    if (sv->diem >= 9) strcpy(sv->hocLuc, "Xuat sac");
-    else if (sv->diem >= 8) strcpy(sv->hocLuc, "Gioi");
-    else if (sv->diem >= 6.5) strcpy(sv->hocLuc, "Kha");
-    else if (sv->diem >= 5) strcpy(sv->hocLuc, "Trung binh");
-    else strcpy(sv->hocLuc, "Yeu");
-}
-
-void chucNang8() {
-    int n;
-    printf("Nhap so sinh vien: ");
-    scanf("%d",&n);
-    getchar();
-
-    SinhVien sv[100];
-
-    for(int i=0;i<n;i++){
-        printf("Ten SV %d: ", i+1);
-        fgets(sv[i].ten, sizeof(sv[i].ten), stdin);
-        sv[i].ten[strcspn(sv[i].ten, "\n")] = 0;
-
-        printf("Diem: ");
-        scanf("%f",&sv[i].diem);
-        getchar();
-
-        xepHocLuc(&sv[i]);
-    }
-
-    for(int i=0;i<n-1;i++){
-        for(int j=i+1;j<n;j++){
-            if(sv[i].diem < sv[j].diem){
-                SinhVien t = sv[i];
-                sv[i] = sv[j];
-                sv[j] = t;
-            }
+    printf("Ket qua doi tien:\n");
+    for (int i = 0; i < n; i++) {
+        int soTo = tien / menhGia[i];
+        if (soTo > 0) {
+            printf("%d to %d\n", soTo, menhGia[i]);
         }
-    }
-
-    printf("\nDanh sach sinh vien:\n");
-    for(int i=0;i<n;i++){
-        printf("%s - %.1f - %s\n", sv[i].ten, sv[i].diem, sv[i].hocLuc);
+        tien %= menhGia[i];
     }
 }
 
+void chucNang6() {
+    double soTienGui, laiSuat;
+    int thang;
+
+    printf("Nhap so tien gui (VND): ");
+    scanf("%lf", &soTienGui);
+    printf("Nhap lai suat nam (%%): ");
+    scanf("%lf", &laiSuat);
+    printf("Nhap so thang gui: ");
+    scanf("%d", &thang);
+
+    double laiSuatThang = laiSuat / 12 / 100;
+    double tienLai = soTienGui * laiSuatThang * thang;
+    double tongTien = soTienGui + tienLai;
+
+    printf("Tien lai: %.0lf VND\n", tienLai);
+    printf("Tong tien nhan duoc: %.0lf VND\n", tongTien);
+}
+
+// ================= MENU =================
 int main() {
     int choice;
     do {
         printf("\n===== MENU =====\n");
-        printf("1. Kiem tra so\n");
+        printf("1. Kiem tra so nguyen x\n");
         printf("2. UCLN & BCNN\n");
-        printf("3. Karaoke\n");
-        printf("4. Tien dien\n");
+        printf("3. Tinh tien karaoke\n");
+        printf("4. Tinh tien dien\n");
         printf("5. Doi tien\n");
-        printf("6. Lai tiet kiem\n");
-        printf("7. Vay mua xe\n");
-        printf("8. Quan ly sinh vien\n");
+        printf("6. Tinh lai tiet kiem\n");
         printf("0. Thoat\n");
 
         printf("Nhap lua chon: ");
-        scanf("%d",&choice);
+        scanf("%d", &choice);
 
-        switch(choice){
+        switch (choice) {
             case 1: chucNang1(); break;
             case 2: chucNang2(); break;
             case 3: chucNang3(); break;
             case 4: chucNang4(); break;
             case 5: chucNang5(); break;
             case 6: chucNang6(); break;
-            case 7: chucNang7(); break;
-            case 8: chucNang8(); break;
-            case 0: printf("Thoat chuong trinh\n"); break;
-            default: printf("Nhap sai!\n");
+            case 0: printf("Thoat chuong trinh.\n"); break;
+            default: printf("Lua chon khong hop le!\n");
         }
-    } while(choice!=0);
+
+    } while (choice != 0);
 
     return 0;
 }
- 
